@@ -23,7 +23,7 @@ export class HomePage {
   }
 
   login() {
-    this.navCtrl.setRoot('CategoriesPage');
+    this.navCtrl.setRoot('ItemsPage');
   }
 
 }
