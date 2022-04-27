@@ -11,6 +11,7 @@ import { ItemServise } from '../services/domain/items.service';
 import { ErrorInterceptorProvider } from '../interceptors/error-interceptor';
 import { AuthService } from '../services/auth.service';
 import { StrorageService } from '../services/storage.service';
+import { CollaboratorService } from '../services/domain/collaborator.service';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import { StrorageService } from '../services/storage.service';
     ItemServise,
     ErrorInterceptorProvider,
     AuthService,
-    StrorageService
+    StrorageService,
+    CollaboratorService
   ]
 })
 export class AppModule {}

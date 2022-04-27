@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { CollaboratorDTO } from '../../models/collaborators.dto';
+import { CollaboratorService } from '../../services/domain/collaborator.service';
 import { StrorageService } from '../../services/storage.service';
 
 /**
@@ -16,15 +18,23 @@ import { StrorageService } from '../../services/storage.service';
 })
 export class ProfilesPage {
 
-  email : string;
+  collaborator: CollaboratorDTO;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public storage: StrorageService) {
+  constructor(public navCtrl: NavController,
+    public navParams: NavParams,
+    public storage: StrorageService,
+    public collaboratorService: CollaboratorService) {
   }
 
   ionViewDidLoad() {
     let localUser = this.storage.getLocalUser();
-    if(localUser && localUser.email)
-      this.email = localUser.email;
+    if (localUser && localUser.email) {
+      this.collaboratorService.findByEmail(localUser.email)
+        .subscribe(response => {
+          this.collaborator = response;
+        },
+        error => { });
+    }
   }
 
 }
