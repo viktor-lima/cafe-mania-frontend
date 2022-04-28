@@ -16,12 +16,7 @@ export class CollaboratorService {
 
     findByEmail(email: string): Observable<CollaboratorDTO> {
 
-        let token = this.storage.getLocalUser().token;
-        let authHeader = new HttpHeaders({ 'Authorization': 'Bearer ' + token })
-
-        return this.http.get<CollaboratorDTO>(
-            `${API_CONGIF.baseUrl}/collaborators/email?value=${email}`,
-            { 'headers': authHeader});
+        return this.http.get<CollaboratorDTO>(`${API_CONGIF.baseUrl}/collaborators/email?value=${email}`);
     }
 
 }

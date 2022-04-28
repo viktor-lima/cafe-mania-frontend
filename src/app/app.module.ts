@@ -12,6 +12,7 @@ import { ErrorInterceptorProvider } from '../interceptors/error-interceptor';
 import { AuthService } from '../services/auth.service';
 import { StrorageService } from '../services/storage.service';
 import { CollaboratorService } from '../services/domain/collaborator.service';
+import { AuthInterceptorProvider } from '../interceptors/auth-interceptor';
 
 @NgModule({
   declarations: [
@@ -29,12 +30,13 @@ import { CollaboratorService } from '../services/domain/collaborator.service';
   providers: [
     StatusBar,
     SplashScreen,
-    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    { provide: ErrorHandler, useClass: IonicErrorHandler },
     ItemServise,
+    AuthInterceptorProvider,
     ErrorInterceptorProvider,
     AuthService,
     StrorageService,
     CollaboratorService
   ]
 })
-export class AppModule {}
+export class AppModule { }
