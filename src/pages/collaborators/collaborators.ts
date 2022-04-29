@@ -1,10 +1,12 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { CollaboratorListDTO } from '../../models/collaboratorsList.dto';
 import { ItemDTO } from '../../models/item.dto';
+import { CollaboratorService } from '../../services/domain/collaborator.service';
 import { ItemServise } from '../../services/domain/items.service';
 
 /**
- * Generated class for the ItemsPage page.
+ * Generated class for the CollaboratorsPage page.
  *
  * See https://ionicframework.com/docs/components/#navigation for more info on
  * Ionic pages and navigation.
@@ -12,30 +14,30 @@ import { ItemServise } from '../../services/domain/items.service';
 
 @IonicPage()
 @Component({
-  selector: 'page-items',
-  templateUrl: 'items.html',
+  selector: 'page-collaborators',
+  templateUrl: 'collaborators.html',
 })
-export class ItemsPage {
+export class CollaboratorsPage {
 
-
-  items: ItemDTO[];
+  collaborators: CollaboratorListDTO[];
 
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
+    public collaboratorService: CollaboratorService,
     public itemService: ItemServise) {
   }
 
   ionViewDidLoad() {
-    this.itemService.findAll()
+    this.collaboratorService.findAll()
       .subscribe(response => {
-        this.items = response;        
-      },
-        error => { })
+        this.collaborators = response;
+      });
   }
 
-  showCollaborators(collaborator_id: string) {
-    this.navCtrl.push('');
-  }
 
 }
+
+
+
+

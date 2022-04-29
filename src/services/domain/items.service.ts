@@ -13,4 +13,7 @@ export class ItemServise{
     findAll() : Observable<ItemDTO[]> {
         return this.http.get<ItemDTO[]>(`${API_CONGIF.baseUrl}/items`);
     }
+    findById(id: string ) : Observable<ItemDTO[]> {
+        return this.http.get<ItemDTO[]>(`${API_CONGIF.baseUrl}/items/${id}`);
+    }
 }
