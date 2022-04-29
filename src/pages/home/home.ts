@@ -33,7 +33,7 @@ export class HomePage {
 
   ionViewDidEnter(){
     this.auth.refreshToken()
-    .subscribe(response =>{
+      .subscribe(response =>{
       this.auth.successfullLogin(response.headers.get("Authorization"));
       this.navCtrl.setRoot('ItemsPage');
     },
@@ -47,6 +47,10 @@ export class HomePage {
         this.navCtrl.setRoot('ItemsPage');
       },
       error=>{});
+  }
+
+  signup(){
+    this.navCtrl.push('SignupPage');
   }
 
 }

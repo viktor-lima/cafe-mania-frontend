@@ -1,0 +1,48 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>Signup</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <form [formGroup]="formGroup" (ngSubmit)="signupUser(); $event.preventDefault()">
+    <ion-item>
+      <ion-label stacked>Name*</ion-label>
+      <ion-input formControlName="name" type="text"></ion-input>
+    </ion-item>
+    <p class="danger" *ngIf="formGroup.controls.name.dirty && formGroup.controls.name.errors" margin-left>Valor inválido
+    </p>
+    <ion-item>
+      <ion-label stacked>Email*</ion-label>
+      <ion-input formControlName="email" type="text"></ion-input>
+    </ion-item>
+    <p class="danger" *ngIf="formGroup.controls.email.dirty && formGroup.controls.email.errors" margin-left>Valor
+      inválido</p>
+
+    <ion-item>
+      <ion-label stacked>CPF*</ion-label>
+      <ion-input formControlName="cpf"  type="text"></ion-input>
+    </ion-item>
+    <p class="danger" *ngIf="formGroup.controls.cpf.dirty && formGroup.controls.cpf.errors" margin-left>
+      Valor inválido</p>
+    <ion-item>
+      <ion-label stacked>Password*</ion-label>
+      <ion-input formControlName="password" type="password"></ion-input>
+    </ion-item>
+    <p class="danger" *ngIf="formGroup.controls.password.dirty && formGroup.controls.password.errors" margin-left>Valor
+      inválido</p>
+   
+    
+    <ion-item>
+      <ion-label stacked>Phone 1*</ion-label>
+      <ion-input formControlName="phone1"  type="text"></ion-input>
+    </ion-item>
+    <p class="danger" *ngIf="formGroup.controls.phone1.dirty && formGroup.controls.phone1.errors" margin-left>
+      Valor inválido</p>
+    <ion-item>
+      <ion-label stacked>Phone 2</ion-label>
+      <ion-input formControlName="phone2"  type="text"></ion-input>
+    </ion-item>
+   <button ion-button block type="submit" >Create an account</button>
+  </form>
+</ion-content>
