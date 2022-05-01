@@ -1,6 +1,5 @@
 export interface CollaboratorDTO {
-    id: string;
+    id:string;
     name: string;
     email: string;
-
 }

@@ -15,14 +15,16 @@
 
 
 <ion-content padding>
-  <!-- <ion-list> -->
-    <!-- *ngFor="let item of items" -->
-    <button ion-item *ngFor="let item of items">
-      <ion-thumbnail item-start>
-        <img src="../../assets/imgs/prod.jpg">
-      </ion-thumbnail>
-      <h2>{{item.name}}</h2>
-      <h3>{{item.description}}</h3>
-    </button>
-  <!-- </ion-list> -->
+    <ion-fab top right edge>
+      <button navPush="AddItemPage" ion-fab mini><ion-icon name="add-outline"></ion-icon></button>
+    </ion-fab>
+    <!-- <button ion-item *ngFor="let item of items"> -->
+      <ion-item *ngFor="let item of items">
+        <ion-thumbnail item-start>
+          <img src="../../assets/imgs/prod.jpg">
+        </ion-thumbnail>
+        <h2>{{item.name}}</h2>
+        <h3>{{item.description}}</h3>
+      </ion-item>
+    <!-- </button> -->
 </ion-content>

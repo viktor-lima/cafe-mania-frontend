@@ -16,6 +16,9 @@
 
 <ion-content padding>
   <!-- <ion-list> -->
+    <ion-fab top right edge>
+      <button navPush="AddItemPage" ion-fab mini><ion-icon name="add-outline"></ion-icon></button>
+    </ion-fab>
     <button ion-item *ngFor="let item of items">
       <ion-thumbnail item-start>
         <img src="../../assets/imgs/prod.jpg">
