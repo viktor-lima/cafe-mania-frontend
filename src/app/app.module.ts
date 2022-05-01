@@ -7,7 +7,7 @@ import { MyApp } from './app.component';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
-import { ItemServise } from '../services/domain/items.service';
+import { ItemService } from '../services/domain/items.service';
 import { ErrorInterceptorProvider } from '../interceptors/error-interceptor';
 import { AuthService } from '../services/auth.service';
 import { StrorageService } from '../services/storage.service';
@@ -31,7 +31,7 @@ import { AuthInterceptorProvider } from '../interceptors/auth-interceptor';
     StatusBar,
     SplashScreen,
     { provide: ErrorHandler, useClass: IonicErrorHandler },
-    ItemServise,
+    ItemService,
     AuthInterceptorProvider,
     ErrorInterceptorProvider,
     AuthService,

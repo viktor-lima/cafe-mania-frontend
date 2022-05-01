@@ -5,7 +5,7 @@ import { API_CONGIF } from "../../config/api.config";
 import { ItemDTO } from "../../models/item.dto";
 
 @Injectable()
-export class ItemServise{
+export class ItemService{
     constructor(public http: HttpClient){
 
     }
@@ -15,5 +15,8 @@ export class ItemServise{
     }
     findById(id: string ) : Observable<ItemDTO[]> {
         return this.http.get<ItemDTO[]>(`${API_CONGIF.baseUrl}/items/${id}`);
+    }
+    findPage() : Observable<ItemDTO[]> {
+        return this.http.get<ItemDTO[]>(`${API_CONGIF.baseUrl}/items/page`);
     }
 }

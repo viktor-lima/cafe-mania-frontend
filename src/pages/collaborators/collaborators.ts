@@ -3,7 +3,7 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { CollaboratorListDTO } from '../../models/collaboratorsList.dto';
 import { ItemDTO } from '../../models/item.dto';
 import { CollaboratorService } from '../../services/domain/collaborator.service';
-import { ItemServise } from '../../services/domain/items.service';
+import { ItemService } from '../../services/domain/items.service';
 
 /**
  * Generated class for the CollaboratorsPage page.
@@ -25,7 +25,7 @@ export class CollaboratorsPage {
     public navCtrl: NavController,
     public navParams: NavParams,
     public collaboratorService: CollaboratorService,
-    public itemService: ItemServise) {
+    public itemService: ItemService) {
   }
 
   ionViewDidLoad() {
