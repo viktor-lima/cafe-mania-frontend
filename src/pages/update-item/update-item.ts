@@ -1,29 +1,31 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AlertController, IonicPage, NavController, NavParams } from 'ionic-angular';
-import { CollaboratorDTO } from '../../models/collaborators.dto';
-import { ItemNewDTO } from '../../models/itemNew.dto';
-import { CollaboratorService } from '../../services/domain/collaborator.service';
+import { ItemDTO } from '../../models/item.dto';
 import { ItemService } from '../../services/domain/items.service';
 import { StrorageService } from '../../services/storage.service';
 
+/**
+ * Generated class for the UpdateItemPage page.
+ *
+ * See https://ionicframework.com/docs/components/#navigation for more info on
+ * Ionic pages and navigation.
+ */
+
 @IonicPage()
 @Component({
-  selector: 'page-add-item',
-  templateUrl: 'add-item.html',
+  selector: 'page-update-item',
+  templateUrl: 'update-item.html',
 })
-export class AddItemPage {
-
+export class UpdateItemPage {
   formGroup: FormGroup;
-  collaborator: CollaboratorDTO;
-  item: ItemNewDTO;
+  item: ItemDTO[];
 
 
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
     public formBuilder: FormBuilder,
-    public collaboratorService: CollaboratorService,
     public storage: StrorageService,
     public itemService: ItemService,
     public alertCtrl: AlertController) {
@@ -31,36 +33,24 @@ export class AddItemPage {
     this.formGroup = this.formBuilder.group({
       name: ['Queijo', [Validators.required, Validators.minLength(3), Validators.maxLength(50)]],
       description: ['Queijo prado', []],
-      collaborator_id: [null, []]
     });
-
-
   }
 
   ionViewDidLoad() {
-    // console.log('ionViewDidLoad SignupPage');
-    let localUser = this.storage.getLocalUser();
-    if (localUser && localUser.email) {
-      this.collaboratorService.findByEmail(localUser.email)
-        .subscribe(response => {
-          this.collaborator = response;
-        },
-          error => { });
-    }
-
   }
 
-  addItem() {
-    // console.log(this.formGroup.value);
-    this.itemService.insert(this.formGroup.value)
-      .subscribe(response => {
+  update(){
+    let item_id = this.navParams.get('item_id');
+    this.itemService.update(this.formGroup.value, item_id)
+      .subscribe(response =>{
         this.showInsertOk();
-      })
+      });
   }
+
   showInsertOk() {
     let alert = this.alertCtrl.create({
       title: 'Success',
-      message: 'Registration successfully Complete',
+      message: 'update performed',
       enableBackdropDismiss: false,
       buttons: [
         {
@@ -75,3 +65,8 @@ export class AddItemPage {
   }
 
 }
+
+
+
+
+

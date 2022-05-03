@@ -24,6 +24,10 @@ export class CollaboratorService {
         return this.http.get<CollaboratorDTO>(`${API_CONGIF.baseUrl}/collaborators/email?value=${email}`);
     }
 
+    findById(id: string): Observable<CollaboratorDTO> {
+        return this.http.get<CollaboratorDTO>(`${API_CONGIF.baseUrl}/collaborators/${id}`);
+    }
+
     insert(obj: CollaboratorDTO) {
         return this.http.post(
             `${API_CONGIF.baseUrl}/collaborators`,

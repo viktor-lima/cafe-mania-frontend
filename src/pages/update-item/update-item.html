@@ -1,11 +1,11 @@
 <ion-header>
   <ion-navbar>
-    <ion-title>AddItem</ion-title>
+    <ion-title>Edit</ion-title>
   </ion-navbar>
 </ion-header>
 
 <ion-content padding>
-  <form [formGroup]="formGroup" (ngSubmit)="addItem(); $event.preventDefault()">
+  <form [formGroup]="formGroup" (ngSubmit)="update(); $event.preventDefault()">
     <ion-item>
       <ion-label stacked>Name*</ion-label>
       <ion-input formControlName="name" type="text"></ion-input>
@@ -16,17 +16,6 @@
       <ion-label stacked>Description</ion-label>
       <ion-input formControlName="description" type="text"></ion-input>
     </ion-item>
-    <ion-item>
-      <ion-label stacked>Collaborator*</ion-label>
-      <ion-select formControlName="collaborator_id">
-        <ion-option [value]="collaborator?.id">
-          {{collaborator?.name}}
-        </ion-option>
-      </ion-select>
-    </ion-item>
-    <p class="danger" *ngIf="formGroup.controls.collaborator_id.dirty && formGroup.controls.collaborator_id.errors" margin-left>
-      Valorinválido
-    </p>
     <button ion-button block type="submit" [disabled]="formGroup.invalid">to add</button>
   </form>
 </ion-content>

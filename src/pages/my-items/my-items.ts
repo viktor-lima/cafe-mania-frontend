@@ -1,14 +1,7 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { AlertController, IonicPage, NavController, NavParams } from 'ionic-angular';
 import { ItemDTO } from '../../models/item.dto';
 import { ItemService } from '../../services/domain/items.service';
-
-/**
- * Generated class for the MyItemsPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
 
 @IonicPage()
 @Component({
@@ -18,16 +11,50 @@ import { ItemService } from '../../services/domain/items.service';
 export class MyItemsPage {
 
   items: ItemDTO[];
+  item_id: string[];
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public itemService: ItemService) {
+  constructor(public navCtrl: NavController,
+    public navParams: NavParams,
+    public itemService: ItemService,
+    public alertCtrl: AlertController) {
   }
 
   ionViewDidLoad() {
     this.itemService.findPage()
-      .subscribe(response =>{
+      .subscribe(response => {
         this.items = response['content'];
+        this.item_id = this.items.map(x => x.id);
       },
-      error => {});
+        error => { });
   }
 
+
+  removeProduto(id: string) {
+    this.itemService.remove(id)
+      .subscribe(response => {
+        this.msgRemove();
+      },
+        error => { });
+  }
+
+  msgRemove() {
+    let alert = this.alertCtrl.create({
+      title: 'are you sure?',
+      message: 'This action will not return',
+      enableBackdropDismiss: false,
+      buttons: [
+        {
+          text: 'ok',
+          handler: ()=>{
+            this.navCtrl.setRoot('MyItemsPage');
+          }
+        }
+      ]
+    });
+    alert.present();
+  }
+
+  showUpdate(item_id: string){
+    this.navCtrl.push('UpdateItemPage', {item_id: item_id});
+  }
 }

@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { IonicPageModule } from 'ionic-angular';
-import { CategoryService } from '../../services/domain/category.service';
 import { AddItemPage } from './add-item';
 
 @NgModule({
@@ -11,7 +10,6 @@ import { AddItemPage } from './add-item';
     IonicPageModule.forChild(AddItemPage),
   ],
   providers:[
-    CategoryService
   ]
 })
 export class AddItemPageModule {}
