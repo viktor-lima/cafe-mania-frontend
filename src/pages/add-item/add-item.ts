@@ -29,8 +29,8 @@ export class AddItemPage {
     public alertCtrl: AlertController) {
 
     this.formGroup = this.formBuilder.group({
-      name: ['Queijo', [Validators.required, Validators.minLength(3), Validators.maxLength(50)]],
-      description: ['Queijo prado', []],
+      name: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(50)]],
+      description: ['', []],
       collaborator_id: [null, []]
     });
 
