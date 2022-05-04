@@ -1,3 +1,3 @@
 export const API_CONGIF = {
-    baseUrl: "http://localhost:8080"
+    baseUrl: "https://cafe-mania-app.herokuapp.com"
 }

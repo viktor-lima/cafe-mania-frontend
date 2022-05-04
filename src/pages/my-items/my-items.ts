@@ -32,21 +32,20 @@ export class MyItemsPage {
   removeProduto(id: string) {
     this.itemService.remove(id)
       .subscribe(response => {
-       
+        this.msg();
       },
         error => { });
   }
 
-  msg(id:string) {
+  msg() {
     let alert = this.alertCtrl.create({
-      title: 'are you sure?',
+      title: 'successfully deleted',
       message: 'This action will not return',
       enableBackdropDismiss: false,
       buttons: [
         {
           text: 'ok',
           handler: ()=>{
-            this.removeProduto(id);
             this.navCtrl.setRoot('MyItemsPage');
           }
         }
