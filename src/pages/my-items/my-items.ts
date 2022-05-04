@@ -32,12 +32,12 @@ export class MyItemsPage {
   removeProduto(id: string) {
     this.itemService.remove(id)
       .subscribe(response => {
-        this.msgRemove();
+       
       },
         error => { });
   }
 
-  msgRemove() {
+  msg(id:string) {
     let alert = this.alertCtrl.create({
       title: 'are you sure?',
       message: 'This action will not return',
@@ -46,6 +46,7 @@ export class MyItemsPage {
         {
           text: 'ok',
           handler: ()=>{
+            this.removeProduto(id);
             this.navCtrl.setRoot('MyItemsPage');
           }
         }
@@ -58,3 +59,7 @@ export class MyItemsPage {
     this.navCtrl.push('UpdateItemPage', {item_id: item_id});
   }
 }
+function id(id: any) {
+  throw new Error('Function not implemented.');
+}
+
